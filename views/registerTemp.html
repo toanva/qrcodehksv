@@ -1,0 +1,165 @@
+<html>
+<head Content-Type="application/json">
+<title>Điểm danh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/sky-forms.css">
+<link rel="stylesheet" href="css/sky-forms-blue.css">
+<script src="/js/jquery-3.3.1.min.js"></script>
+<style>
+form {
+	background: url("img/logo.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 300px 300px;
+}
+#progress_bar {
+	margin: 10px 0;
+	padding: 3px;
+	border: 1px solid #000;
+	font-size: 14px;
+	clear: both;
+	opacity: 0;
+	-moz-transition: opacity 1s linear;
+	-o-transition: opacity 1s linear;
+	-webkit-transition: opacity 1s linear;
+}
+#progress_bar.loading {
+	opacity: 1.0;
+}
+#progress_bar .percent {
+	background-color: #99ccff;
+	height: auto;
+	width: 0;
+}
+</style>
+</head>
+<body class="bg-blue">
+<script type='text/javascript' src="/js/psid.js?vesion=1"></script>
+<div class="body">           
+          <!-- Red color scheme -->
+          <form action="/registerspostback.bot" method="post" class="sky-form">
+            <header align="center" >
+              <div class="header" align="center">
+                <table width="100%" border="0" align="center">
+                  <tbody>
+                    <tr>
+                      <td width="20"><img src="/img/logoM.png" alt="logo" /></td>
+                      <td width="5"></td>
+                      <td>Thu thập thông tin hội viên</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </header>
+            <input type="hidden" name="psid" id="psid">
+            <fieldset>
+			 <section id="stLevel" name="stLevel">
+				<label class="label">Cấp cán bộ</label>
+				<label class="select" >
+				  <input type="hidden" name="txtLevel" id="txtLevel">
+				  <select  id="cboLevel" name="cboLevel" onchange="cboLevelChange(this)" >
+					<option value="1">Cấp Trung Ương </option>
+				    <option value="2">Cấp Tỉnh/TP (hoặc tương đương)</option>
+				    <option value="3">Cấp Quận/Huyện (hoặc tương đương)</option>
+				    <option value="4">Cấp Phường/Xã (hoặc tương đương)</option>
+				    <option value="5">Cấp chi hội, CLB, tổ, đội, nhóm (hoặc tương đương)</option>
+				  </select>
+				  <i></i> </label>
+			</section> 	
+			    <section id="stPosition" name="stPosition">
+                <label class="label">Chức danh</label>
+                <label class="select">
+                  <select id="cboPosition" name="cboPosition" onchange="cboPositionChange(this)">
+					<option value="0">Chọn</option>
+                  </select>
+                  <i></i> </label>
+              </section>           
+            
+              <section id="stProvincial" name="stProvincial" style="display: none">
+                <label class="label">Đơn vị tương đương cấp Tỉnh</label>
+                <label class="select">
+                  <input type="hidden" name="txtProvincial" id="txtProvincial">
+                  <select id="cboProvincial" name="cboProvincial" onchange="onCboProvincialsChange(this)">
+                    <option value="0">Chọn</option>
+                  </select>
+                  <i></i> </label>
+              </section>
+              <section id="stDistricts" name="stDistricts" style="display: none">
+                <label class="label">Đơn vị tương đương cấp Huyện</label>
+                <label class="input" >
+                  <input type="text" name="txtDistricts" id="txtDistricts">
+                  </label>
+              </section>
+              <section id="stWards" name="stWards" style="display: none">
+                <label class="label">Đơn vị tương đương cấp Xã</label>
+                <label class="input" >
+                  <input type="text"  name="txtWards" id="txtWards">
+                   </label>
+              </section>
+			 <section id="stBranch" name="stBranch" style="display: none">
+                <label class="label">Chi hội</label>
+                <label class="input" >
+                  <input name="txtBranch" id="txtBranch">
+                 </label>
+				</section>
+			    <section id="stName" name="stName">
+                <label class="label">Họ và tên</label>
+                <label class="input">
+                  <input type="text" id="txtFullName" name="txtFullName" required=true>
+                </label>
+              </section>
+              <section id="stBirthday" name="stBirthday">
+                <label class="label">Ngày sinh (DD/MM/YYYY)</label>
+                <label class="input">
+                <table width="100%" border="0" align="center">
+                  <tbody>
+                    <tr>
+                      <td width="24%"><input type="number" id="txtDay" name="txtDay" min="1" max="31" maxlength="2" value="22" required=true></td>
+                      <td>/</td>
+                      <td width="24%"><input type="number" id="txtMonth" name="txtMonth" min="1" max="12" maxlength="2" value="04" required=true></td>
+                      <td>/</td>
+                      <td width="32%"><input type="number" id="txtYear" name="txtYear" min="1900" max="3000" maxlength="4" value="1985" required=true></td>
+                      <td width="20%" align="left"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                </label>
+              </section>
+              <section id="stPhone" name="stPhone">
+                <label class="label">Số ĐT liên hệ</label>
+                <label class="input">
+                  <input type="text" id="txtPhone" name="txtPhone" required=true>
+                </label>
+              </section>
+			 <section id="stEmail" name="stEmail">
+                <label class="label">Email</label>
+                <label class="input">
+                  <input type="text" id="txtEmail" name="txtEmail" required=true>
+                </label>
+              </section>
+<!--
+			   <section>
+				<label class="label">Ảnh đại diện</label>
+				<label class="label">
+				  <input type="file" id="txtAvatar" name="txtAvatar"  
+			   accept="image/*" class="input-file .button" >
+				</label>
+			  </section>
+				 <div id="progress_bar">
+					<div class="percent">0%</div>
+				  </div>			 
+-->
+            </fieldset>
+            <footer align="center">
+              <button type="button" value="Submit" id="btnSend" class="button" onClick="SaveObject()" name="btnSend">Kết thúc</button>
+				
+            </footer>
+          </form>
+          <!--/ Red color scheme --> 
+        </div>
+</body>
+<script type='text/javascript' src="/js/registertemp.js?vesion=1.1.12"></script>
+</html>

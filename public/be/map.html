@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8">
+<link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-clearmin.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/roboto.css">
+<link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
+<link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+<style>
+#map {
+	height: 100%;
+	
+}
+	 html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+</style>
+<style type='text/css'>
+  .bold-green-font {
+   
+    color: green;
+  }
+
+  .bold-font {
+   
+  }
+
+  .right-text {
+    text-align: right;
+  }
+
+  .large-font {
+    font-size: 13px;
+  }
+
+  .italic-darkblue-font {
+    font-style: italic;
+    color: darkblue;
+  }
+
+  .italic-purple-font {
+    font-style: italic;
+    color: purple;
+  }
+
+  .underline-blue-font {
+    text-decoration: underline;
+    color: blue;
+  }
+
+  .gold-border {
+    border: 3px solid gold;
+  }
+
+  .deeppink-border {
+    border: 3px solid deeppink;
+  }
+
+  .orange-background {
+    background-color: orange;
+  }
+
+  .orchid-background {
+    background-color: orchid;
+  }
+
+  .beige-background {
+    background-color: beige;
+  }
+.google-visualization-table-page-number {
+  background-color: beige;
+}	
+.hs {
+    position: absolute;
+    left: 370px;
+    top: 160px;
+	z-index: 9999;
+}
+.ts {
+    position: absolute;
+    left: 430px;
+    top: 280px;
+	z-index: 9999;
+}
+</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/jquery-migrate-1.4.1.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="../js/conf.js"></script>
+<script src="../js/map.js"></script>
+<title>NSVN-Map</title>
+</head>
+<body class="cm-no-transition cm-1-navbar">
+<div id="cm-menu">
+  <nav class="cm-navbar cm-navbar-primary">
+    <div class="cm-flex">
+      <div class="cm-logo"></div>
+    </div>
+    <div class="btn btn-primary md-menu-white" data-toggle="cm-menu"></div>
+  </nav>
+  <div id="cm-menu-content">
+    <div id="cm-menu-items-wrapper">
+      <div id="cm-menu-scroller">
+        <ul class="cm-menu-items">
+          <li><a href="index.html" class="sf-dashboard">Điều khiển</a></li>
+          <li><a href="ai.html" class="sf-cogs">Cấu hình AI</a></li>
+          <li><a href="membernew.html" class="sf-profile-group">Thành viên</a></li>
+          <li><a href="mess.html" class="sf-box-out">Gửi tin</a></li>
+          <li><a href="productnew.html" class="sf-shop">Sản phẩm</a></li>
+          <li class="active"><a href="map.html" class="sf-map">Bản đồ</a></li>
+          <li><a href="analyze.html" class="sf-monitor">Phân tích</a></li>
+			 <li><a href="user.html" class="sf-profile-group">Tài khoản</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<header id="cm-header">
+  <nav class="cm-navbar cm-navbar-primary">
+    <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
+    <div class="cm-flex">
+      <h1>Bản đồ phân bổ nông sản</h1>
+    </div>
+  </nav>
+</header>
+<div id="global">
+  <div class="container-fluid">
+    <div class="panel panel-default">
+      <div class="panel-body" style="height: 100%">        
+        <table width="100%" height="600" style=" border-collapse: collapse;border: 1px solid black">
+          <tbody>
+            <tr>
+              <td width="566" height="347">
+				  <div style="position: relative;">
+				  <div id="dvMap" style="height: 347;width: 556; margin: 0;padding: 0"> 
+				  </div>
+				  <label class="hs">Hoàng Sa</label>
+				  <label class="ts">Trường Sa</label>
+				  </div>	  
+			  </td>
+			<td align="center" valign="middle" width="447">
+			 <div id="dvPie" style="height: 100%;width: 100%; margin: 0;padding: 0"> 
+				  </div>
+			</td>
+            </tr>
+			  <tr>
+			<td colspan="2" height="15">
+				  <label id="lblP" name="lblP"></label>
+			  </td>
+			  </tr>
+            <tr>
+			 	
+              <td colspan="2">
+				  <div id="dvGrdProduct" style="height: 100%;width: 100%; margin: 0;padding: 0"> 
+				  </div>
+			  </td>			
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer class="cm-footer"><span class="pull-right">&copy; NSVN - KYC.NET.VN Inc.</span></footer>
+</div>
+<!--
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Ku0e4U5pBW1GXdduH01dZ6W7w7yCLD4&callback=initMap">
+</script>
+-->
+<script src="assets/js/jquery.mousewheel.min.js"></script>
+<script src="assets/js/jquery.cookie.min.js"></script>
+<script src="assets/js/fastclick.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/clearmin.js"></script>
+</body>
+</html>

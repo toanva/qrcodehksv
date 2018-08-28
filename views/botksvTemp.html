@@ -1,0 +1,201 @@
+<html>
+<head Content-Type="application/json">
+<title>Danh sách hội viên cần xác thực</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.52, minimum-scale=0.3">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="icon" type="image/png" href="img/NSVN.png"/>
+<link rel="shortcut icon" href="img/logo.jpg">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/sky-forms.css">
+<link rel="stylesheet" href="css/sky-forms-blue.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="js/jquery-3.3.1.min.js"></script>
+<style>
+
+.demo-table {
+	border-collapse: collapse;
+	font-size: 12px;
+	
+	width: 562px;
+}
+.demo-table th, .demo-table td {
+	border: 1px solid #e1edff;	
+	padding: 7px 17px;
+}
+.demo-table .title {
+	caption-side: bottom;
+	margin-top: 12px;
+}
+/* Table Header */
+.demo-table thead th {
+	background-color: #508abb;
+	color: #FFFFFF;
+	border-color: #6ea1cc !important;
+	text-transform: uppercase;
+}
+/* Table Body */
+.demo-table tbody td {
+	color: #353535;
+}
+.demo-table tbody td:first-child, .demo-table tbody td:last-child, .demo-table tbody td:nth-child(4) {
+}
+.demo-table tbody tr:nth-child(odd) td {
+	background-color: #f4fbff;
+}
+.demo-table tbody tr:hover td {
+	background-color: #ffffa2;
+	border-color: #ffff0f;
+	transition: all .2s;
+	
+}
+/* Table Footer */
+.demo-table tfoot th {
+	background-color: #e5f5ff;
+	text-align: left;
+}
+.demo-table tfoot th:first-child {
+	text-align: left;
+
+}
+.demo-table tbody td:empty {
+	background-color: #ffcccc;
+}
+.buttons {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+     #padre{
+   overflow-x: visible;
+  white-space: nowrap;
+      
+  }
+
+
+#dvMain{
+  left: 0;
+    position: inherit;
+    overflow: visible;
+    -moz-transform-origin: top left;
+    -ms-transform-origin: top left;
+    -o-transform-origin: top left;
+    -webkit-transform-origin: top left;
+     transform-origin: top left;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+     transition: all .2s ease-in-out;
+}
+
+</style>
+</head>
+<script>	 
+(function (d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'Messenger'));
+	window.extAsyncInit = () => {
+		///var isSupported = MessengerExtensions.isInExtension(); 
+		//alert(isSupported);
+		// TODO: How to parse env file from here?
+		MessengerExtensions.getSupportedFeatures(function success(result) {
+			let features = result.supported_features;
+			if (features.includes("context")) {
+				MessengerExtensions.getContext('797301893703166',
+					function success(thread_context) {
+						// success
+						console.log("success :" +thread_context.psid);
+						document.getElementById("psid").value = thread_context.psid;
+					},
+					function error(err) {
+						// error
+						console.log("Err:"+err);
+					}
+				);
+			}
+		}, function error(err) {
+			// error retrieving supported features
+			console.log("Err:"+err);
+		});
+		document.getElementById('btnClose').addEventListener('click', () => {
+			Close();
+		});		
+
+		function Close(){
+			MessengerExtensions.requestCloseBrowser(function success() {
+				$.ajax({
+					dataType: "json",
+					url: "/closeForm?psid="+document.getElementById("psid").value,
+					data: obj,
+					success: function (data) {
+						console.log(data);
+					}
+				});
+			}, function error(err) {
+			   console.log("getElementById Err:"+err);
+			});
+		};
+
+	};
+</script>
+<body class="bg-blue" style="position: static">
+<div id="padre"> </div>
+<div class="body-ksv" id="dvMain"> 
+
+  
+  <!-- Red color scheme -->
+  <form method="post" class="sky-form">
+    <header align="center" >
+      <div class="header" align="center">
+        <table width="100%" border="0" align="center">
+          <tbody>
+            <tr>
+              <td width="20"><img src="img/logoM.png" alt="logo" /></td>
+              <td width="5"></td>
+              <td>Danh sách hội viên</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </header>
+    <input type="hidden" name="psid" id="psid">
+    <fieldset id="fsListMember" name="fsListMember" >
+      <section>
+		<table width="100%" border="1" class="demo-table">
+          <thead>
+            <tr>
+              <th scope="col" width="120px" >ẢNH ĐẠI DIỆN</th>
+              <th scope="col" >THÔNG TIN</th>
+              <th scope="col" width="75px" >DUYỆT</th>
+              <th scope="col" width="75px" >TỪ CHỐI</th>
+            </tr>
+          </thead>
+        </table>
+
+		<div id="dvMemberList" name="dvMemberList"></div>  
+      </section>
+    
+    </fieldset>
+    <footer align="center">   <button type="button" value="Submit" id="btnClose" class="button"  name="btnClose">Đóng</button>
+	  </footer>
+  </form>
+  <!--/ Red color scheme --> 
+</div>
+</body>
+<script type='text/javascript' src="js/botksv.js?v=1.1.24">
+</script>
+</html>

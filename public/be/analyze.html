@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-clearmin.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/roboto.css">
+<link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
+<link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../css/jquery-ui-git.css" />
+<link rel="stylesheet" type="text/css" href="../css/theme.css" />
+<link rel="stylesheet" type="text/css" href="../css/demos.css" />
+<style>
+	demo-table {
+		border-collapse: collapse;
+		font-size: 12px;
+		width: 98%;
+		min-width: 800px;
+		max-width: 1500px;
+	}
+	.demo-table th, .demo-table td {
+		border: 1px solid #e1edff;
+		padding: 7px 17px;
+	}
+	.demo-table .title {
+		caption-side: bottom;
+		margin-top: 12px;
+	}
+	/* Table Header */
+	.demo-table thead th {
+		background-color: #508abb;
+		color: #FFFFFF;
+		border-color: #6ea1cc !important;
+		text-transform: uppercase;
+	}
+	/* Table Body */
+	.demo-table tbody td {
+		color: #353535;
+
+	}
+	.demo-table tbody td:first-child, .demo-table tbody td:last-child, .demo-table tbody td:nth-child(4) {
+	}
+	.demo-table tbody tr:nth-child(odd) td {
+		background-color: #f4fbff;
+	}
+	.demo-table tbody tr:hover td {
+		background-color: #ffffa2;
+		border-color: #ffff0f;
+		transition: all .2s;
+	}
+	/* Table Footer */
+	.demo-table tfoot th {
+		background-color: #e5f5ff;
+	}
+	.demo-table tfoot th:first-child {
+		text-align: left;
+	}
+	.demo-table tbody td:empty {
+		background-color: #ffcccc;
+	}	
+</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/jquery-migrate-1.4.1.min.js"></script>
+<script src="../js/jquery-ui-git.js"></script>
+<title>NSVN-Chào bán mới</title>
+</head>
+<body class="cm-no-transition cm-1-navbar">
+<div id="cm-menu">
+  <nav class="cm-navbar cm-navbar-primary">
+    <div class="cm-flex">
+      <div class="cm-logo"></div>
+    </div>
+    <div class="btn btn-primary md-menu-white" data-toggle="cm-menu"></div>
+  </nav>
+  <div id="cm-menu-content">
+    <div id="cm-menu-items-wrapper">
+      <div id="cm-menu-scroller">
+        <ul class="cm-menu-items">
+          <li><a href="index.html" class="sf-dashboard">Điều khiển</a></li>
+          <li><a href="ai.html" class="sf-cogs">Cấu hình AI</a></li>
+          <li ><a href="membernew.html" class="sf-profile-group">Thành viên</a></li>
+          <li><a href="mess.html" class="sf-box-out">Gửi tin</a></li>
+          <li><a href="productnew.html" class="sf-shop">Sản phẩm</a></li>
+          <li><a href="map.html" class="sf-map">Bản đồ</a></li>
+          <li class="active"><a href="analyze.html" class="sf-monitor">Phân tích</a></li>
+		   <li><a href="user.html" class="sf-profile-group">Tài khoản</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<header id="cm-header">
+  <nav class="cm-navbar cm-navbar-primary">
+    <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
+    <div class="cm-flex">
+      <h1>10 sản phẩm chào bán mới nhất</h1>
+    </div>
+  </nav>
+</header>
+<div id="global">
+  <div class="container-fluid">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table width="100%" border="0" height="450px">
+          <tbody>
+            <tr>
+              <td ></td>
+            </tr>
+            <tr height="450">
+              <td valign="top" align="center"><div id="dvGrdProduct"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer class="cm-footer"><span class="pull-right">&copy; NSVN KYC.NET.VN Inc.</span></footer>
+</div>
+<script src="assets/js/jquery.mousewheel.min.js"></script> 
+<script src="assets/js/jquery.cookie.min.js"></script> 
+<script src="assets/js/fastclick.min.js"></script> 
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/clearmin.min.js"></script> 
+<script src="../js/analyze.js"></script>
+</body>
+</html>

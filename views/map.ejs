@@ -1,0 +1,71 @@
+<html>
+  <head>
+   <title>Phân bổ nông sản Việt Nam</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+	 <script>
+      function initMap(){
+	  
+        var uluru = {lat: 21.363, lng: 105.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5.5,
+          center: uluru
+        });
+        
+		var marker1 = new google.maps.Marker({
+          position: {lat: 20.363, lng: 105.000},
+          map: map
+        });
+	    var infowindow1 = new google.maps.InfoWindow({
+		  content: '<p>ID: Hà nội<br>Data: 20/04/2018 09:46:20<br>Nông sản: Rau sạch 500k 1 bó'
+		});
+		google.maps.event.addListener(marker1, 'click', function() {
+		  infowindow1.open(map, marker1);
+		});
+		
+		var marker2 = new google.maps.Marker({
+          position: {lat: 20.170086, lng: 106.322542},
+          map: map
+        });
+	    var infowindow2 = new google.maps.InfoWindow({
+		  content: '<p>ID: Quất Lâm<br>Data: 06/04/2018 09:46:20<br>Hải sản : ghẹ 40kg 300k'
+		});
+		google.maps.event.addListener(marker2, 'click', function() {
+		  infowindow2.open(map, marker2);
+		});
+		  
+		
+		var marker3 = new google.maps.Marker({
+          position: {lat: 20.170088, lng: 106.322543},
+          map: map
+        });
+	    var infowindow3 = new google.maps.InfoWindow({
+		  content: '<p>ID: Quất Lâm 2<br>Data: 06/08/2018 09:46:20<br>Hải sản : ghẹ 45kg 500k'
+		});
+		google.maps.event.addListener(marker3, 'click', function() {
+		  infowindow3.open(map, marker3);
+		});  
+		  
+      }
+    </script>
+  </head>
+  <body>  
+	
+    <div id="map"></div>
+   <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Ku0e4U5pBW1GXdduH01dZ6W7w7yCLD4&callback=initMap">
+    </script>
+    
+  </body>
+</html>
+      

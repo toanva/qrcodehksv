@@ -1,0 +1,11 @@
+{
+  "appSecret": "a503ce21dc2a5020acbc3e6eb2abcd00",
+  "pageAccessToken": "EAAEFkZCbH84oBAIiavpEv6qRw7RIW8FZAmeZCq7t2OnsgC2VKF9sOe0U7Qv6Jd16y9DDHyHidQu51S0hsbIzppCgcUd2nrGngyoJH1RTlU05kwsPrBScSutCCaIR1VUAcMg7Dm2ZAGzJc1T65hQnRtoyi2IGf9wF5YbeqWiUqwZDZD",
+  "validationToken": "verify-token-nsvn",
+  "serverURL": "https://toanvachatbot.herokuapp.com/",
+  "mongoUrl": "mongodb://nosavnnet:nsvn6688@nosavn.net:27018/Nosa_Write_About_Teachers",
+  "databasename": "Nosa_Write_About_Teachers",
+  "image_cloud_name": "nosavn-net",
+  "image_api_key": "617126195119673",
+  "image_api_secret": "8b6rlInYhs6Bubhiu3HsNg3OoVw"
+}

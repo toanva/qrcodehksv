@@ -1,0 +1,191 @@
+<html>
+<head Content-Type="application/json">
+<title>Thu thập thông tin SP</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/sky-forms.css">
+<link rel="stylesheet" href="css/sky-forms-blue.css">
+<script src="/js/jquery-3.3.1.min.js"></script>
+<style>
+#progress_bar {
+	margin: 10px 0;
+	padding: 3px;
+	border: 1px solid #000;
+	font-size: 14px;
+	clear: both;
+	opacity: 0;
+	-moz-transition: opacity 1s linear;
+	-o-transition: opacity 1s linear;
+	-webkit-transition: opacity 1s linear;
+}
+#progress_bar.loading {
+	opacity: 1.0;
+}
+#progress_bar .percent {
+	background-color: #99ccff;
+	height: auto;
+	width: 0;
+}
+form {
+	background: url("img/logo.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 300px 300px;
+}
+</style>
+</head>
+<body class="bg-blue">
+<script type='text/javascript' src="/js/psid.js?vesion=1"></script>
+<div class="body"> 
+  <!-- Red color scheme -->
+  <form action="/iproductspostback.bot" method="post" class="sky-form" >
+    <header align="center" >
+      <div class="header" align="center">
+        <table width="100%" border="0" align="center">
+          <tbody>
+            <tr>
+              <td width="20"><img src="/img/logo.png" alt="logo" /></td>
+              <td width="5"></td>
+              <td>Thu thập thông tin SP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </header>
+    <input type="hidden" name="psid" id="psid">
+    <fieldset>
+      <section>
+        <label class="label">Loại sản phẩm / Tên sản phẩm</label>
+        <table width="100%" border="0">
+          <tbody>
+            <tr>
+              <td width="60%"><label class="select">
+                  <select id="cboType" name="cboType">
+                    <option value="Cây ăn quả">Cây ăn quả</option>
+					<option value="Cây ăn quả">Cây lương thực</option>
+                    <option value="Cây công nghiệp">Cây công nghiệp</option>
+                    <option value="Củ">Củ</option>
+                    <option value="Gia vị">Gia vị</option>
+                    <option value="Rau">Rau</option>
+					 <option value="Khác">Khác</option>
+                  </select>
+                </label></td>
+              <td><label class="input">
+                  <input type="text" id="txtName" name="txtName" required=true>
+                </label></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <label class="label">Sản lượng dự kiến / Đơn vị tính</label>
+        <table width="100%" border="0">
+          <tbody>
+            <tr>
+              <td width="50%"><label class="input">
+                  <input type="number" id="txtQuantity" name="txtQuantity" required=true >
+                </label></td>
+              <td  width="50%">
+				  <label class="select">
+                  <select id="cboQuantityUnit" name="cboQuantityUnit">
+                    <option value="Kg">Kg</option>
+                    <option value="Tạ">Tạ</option>
+                    <option value="Tấn">Tấn</option>
+                  </select>
+                </label></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <label class="label">Giá bán dự kiến / Đơn vị tính</label>
+        <table width="100%" border="0">
+          <tbody>
+            <tr >
+              <td width="40%"><label class="input">
+                  <input type="number" id="txtPrice" name="txtPrice" required=true width="40%">
+                </label></td>
+              <td width="60%"><label class="select">
+                  <select id="cboPriceUnit" name="cboPriceUnit">
+                    <option value="nghìn đồng / Kg">Nghìn đồng/Kg</option>
+                    <option value="nghìn đồng / Tạ">Nghìn đồng/Tạ</option>
+                    <option value="nghìn đồng / Tấn">Nghìn đồng/Tấn</option>
+                  </select>
+                </label></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <label class="label">Số diện tích canh tác / Đơn vị tính</label>
+        <table width="100%" border="0">
+          <tbody>
+            <tr>
+              <td><label class="input">
+                  <input type="number" id="txtAcreage" name="txtAcreage" required=true >
+                </label></td>
+              <td><label class="select">
+                  <select id="cboAcreageUnit" name="cboAcreageUnit">
+                    <option value="m²">m²</option>
+					 <option value="Hecta">Hecta</option>
+					  <option value="Sào">Sào</option>
+					   <option value="Công">Công</option>
+                  </select>
+                </label></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+	  <section >
+		<label class="label">Thời vụ(Từ tháng xx đến tháng yy)</label>
+		<label class="input">
+		<table width="100%" border="0" align="center" style="font: 13px/1.55 'Open Sans', Helvetica, Arial, sans-serif; display: block;margin-bottom: 6px;line-height: 19px;color: #404040">
+		  <tbody>
+			<tr>				
+			  <td width="24%"><label class="label">Từ tháng</label></td>
+			  <td width="24%"><input type="number" id="txtToMonth" name="txtToMonth" min="1" max="12" maxlength="2" value="5" required=true></td>
+			  <td width="25"><label class="label">Đến tháng</label></td>
+			  <td width="24%"><input type="number" id="txtFromMonth" name="txtFromMonth" min="1" max="12" maxlength="2" value="9" required=true></td>
+				<td width="3%"></td>
+			</tr>
+		  </tbody>
+		</table>
+		</label>
+	  </section>
+      <section>
+        <label class="label">Đã có hợp tác xã hay chưa</label>
+        <label class="select">
+          <select id="cboIsCooperative" name="cboIsCooperative">
+            <option value="Đã có">Đã có</option>
+            <option value="Chưa có">Chưa có</option>
+          </select>
+        </label>
+      </section>
+	 <section id="stDescription" name="stDescription" >
+		<label class="label">Mô tả đặc điểm sản phẩm</label>
+		<label class="textarea">
+		  <textarea id="txtDescription"  name="txtDescription" style="resize: none;width: 100%;height: 100px"></textarea>
+		</label>
+	  </section>
+      <section>
+        <label class="label">Ảnh chụp sản phẩm</label>
+        <label class="label">
+          <input type="file" id="txtImage" name="txtImage"  
+       accept="image/*" class="input-file .button" >
+        </label>
+      </section>
+      <div id="progress_bar">
+        <div class="percent">0%</div>
+      </div>
+    </fieldset>
+    <footer align="center">
+      <button type="button" value="Submit" id="btnSend" name="btnSend" class="button" onClick="SaveProduct()">Gửi thông tin</button>
+    </footer>
+  </form>
+  <!--/ Red color scheme --> 
+</div>
+</body>
+<script type='text/javascript' src="/js/iproducts.js?v=1.1.62"></script>
+</html>

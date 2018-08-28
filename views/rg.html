@@ -1,0 +1,135 @@
+<html>
+<head Content-Type="application/json">
+<title>Thu thập thông tin</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<link rel="icon" type="image/png" href="/img/NSVN.png"/>
+<link rel="shortcut icon" href="/img/logo.jpg">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/sky-forms.css">
+<link rel="stylesheet" href="css/sky-forms-blue.css">
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<style>
+form {
+	background: url("img/logo.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 300px 300px;
+}
+</style>
+</head>
+<body class="bg-blue">
+
+  <div class="body"> 
+          
+          <!-- Red color scheme -->
+          <form action="/registerspostback.bot" method="post" class="sky-form">
+            <header align="center" >
+              <div class="header" align="center">
+                <table width="100%" border="0" align="center">
+                  <tbody>
+                    <tr>
+                      <td width="20"><img src="/img/logoM.png" alt="logo" /></td>
+                      <td width="5"></td>
+                      <td>Thu thập thông tin hội viên</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </header>
+            <input type="hidden" name="psid" id="psid">
+            <fieldset>
+			    <section id="stPosition" name="stPosition">
+                <label class="label">Chức danh</label>
+                <label class="select">
+                  <select id="cboPosition" name="cboPosition" onchange="cboPositionChange(this)">
+                    <option value="CTH LHTN Tỉnh">Chủ tịch hội LHTN Tỉnh</option>                    
+                    <option value="CTH LHTN huyện">Chủ tịch hội LHTN Huyện</option>                    
+                    <option value="CTH LHTN xã">Chủ tịch hội LHTN xã</option>
+                  </select>
+                  <i></i> </label>
+              </section>           
+            
+              <section id="stProvincial" name="stProvincial">
+                <label class="label">Tỉnh / Thành phố</label>
+                <label class="select">
+                  <input type="hidden" name="txtProvincial" id="txtProvincial">
+                  <select id="cboProvincial" name="cboProvincial" onchange="onCboProvincialsChange(this)">
+                    <option value="0">Chọn</option>
+                  </select>
+                  <i></i> </label>
+              </section>
+              <section id="stDistricts" name="stDistricts" style="display: none">
+                <label class="label">Huyện / Thành phố trực thuộc tỉnh</label>
+                <label class="select" >
+                  <input type="hidden" name="txtDistricts" id="txtDistricts">
+                  <select id="cboDistricts" name="cboDistricts" onchange="onCboDistrictsChange(this)">
+                    <option value="0">Chọn</option>
+                  </select>
+                  <i></i> </label>
+              </section>
+              <section id="stWards" name="stWards" style="display: none">
+                <label class="label">Phường / Xã </label>
+                <label class="select" >
+                  <input type="hidden" name="txtWards" id="txtWards">
+                  <select  id="cboWards" name="cboWards" onchange="onCboWards(this)" >
+                    <option value="Secretary">Chọn</option>
+                  </select>
+                  <i></i> </label>
+              </section>             
+			    <section id="stName" name="stName">
+                <label class="label">Họ và tên</label>
+                <label class="input">
+                  <input type="text" id="txtFullName" name="txtFullName" required=true>
+                </label>
+              </section>
+              <section id="stBirthday" name="stBirthday">
+                <label class="label">Ngày sinh (DD/MM/YYYY)</label>
+                <label class="input">
+                <table width="100%" border="0" align="center">
+                  <tbody>
+                    <tr>
+                      <td width="24%"><input type="number" id="txtDay" name="txtDay" min="1" max="31" maxlength="2" value="22" required=true></td>
+                      <td>/</td>
+                      <td width="24%"><input type="number" id="txtMonth" name="txtMonth" min="1" max="12" maxlength="2" value="04" required=true></td>
+                      <td>/</td>
+                      <td width="32%"><input type="number" id="txtYear" name="txtYear" min="1900" max="3000" maxlength="4" value="1985" required=true></td>
+                      <td width="20%" align="left"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                </label>
+              </section>
+              <section id="stPhone" name="stPhone">
+                <label class="label">Số ĐT liên hệ</label>
+                <label class="input">
+                  <input type="text" id="txtPhone" name="txtPhone" required=true>
+                </label>
+              </section>
+			 <section id="stEmail" name="stEmail">
+                <label class="label">Email</label>
+                <label class="input">
+                  <input type="text" id="txtEmail" name="txtEmail" required=true>
+                </label>
+              </section>
+			 <section id="stBranch" name="stBranch" style="display: none">
+                <label class="label">Danh sách các chi hội trực thuộc, viết cách nhau bằng dấu phẩy (Vd: Chi hội A, Chi hội B, Chi hội C)</label>
+                <label class="textarea">
+                  <textarea id="txtBranch"  name="txtBranch" style="resize: none;width: 100%;height: 100px"></textarea>
+                </label>
+              </section>
+            </fieldset>
+            <footer align="center">
+              <button type="button" value="Submit" id="btnSend" class="button" onClick="SaveObject()" name="btnSend">Đồng ý</button>
+				
+            </footer>
+          </form>
+          <!--/ Red color scheme --> 
+        </div>
+</body>
+<script type='text/javascript' src="/js/rg.js">
+	
+</script>
+</html>

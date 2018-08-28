@@ -1,0 +1,202 @@
+﻿<html>
+<head Content-Type="application/json">
+<title>Điểm danh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/sky-forms.css?v=1.1.1.1">
+<link rel="stylesheet" href="css/sky-forms-blue.css">
+<script src="/js/jquery-3.3.1.min.js"></script>
+<style>
+form {
+	background: url("img/logo.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 300px 300px;
+}
+#progress_bar {
+	margin: 10px 0;
+	padding: 3px;
+	border: 1px solid #000;
+	font-size: 14px;
+	clear: both;
+	opacity: 0;
+	-moz-transition: opacity 1s linear;
+	-o-transition: opacity 1s linear;
+	-webkit-transition: opacity 1s linear;
+}
+#progress_bar.loading {
+	opacity: 1.0;
+}
+#progress_bar .percent {
+	background-color: #99ccff;
+	height: auto;
+	width: 0;
+}
+</style>
+</head>
+<body class="bg-blue">
+<script type='text/javascript' src="/js/psid.js?vesion=1"></script>
+<div class="body">           
+          <!-- Red color scheme -->
+          <form action="/registerspostback.bot" method="post" class="sky-form" autautocomplete="off">
+            <header align="center" >
+              <div class="headerMin" align="center">
+                <table width="100%" border="0" align="center">
+                  <tbody>
+                    <tr>                      
+                      <td>Thu thập thông tin Cán bộ/Hội viên</td>
+					  
+                    </tr>
+					 <tr>
+						 <td style="font-size: 10px;font-style: italic;">(Để phục vụ cho mục đích xây dựng CSDL của Hội, Cơ quan thường trực Trung ương Hội cam kết không cung cấp, tiết lộ thông tin cho bên thứ 3)</td>
+					  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </header>
+            <input type="hidden" name="psid" id="psid">
+            <fieldset>
+			 <section id="stLevel" name="stLevel">
+				<label class="label">Cấp cán bộ</label>
+				<label class="select" >
+				  <input type="hidden" name="txtLevel" id="txtLevel">
+				  <select  id="cboLevel" name="cboLevel" onchange="cboLevelChange(this)" >
+					<option value="1">Cấp Trung Ương </option>
+				    <option value="2">Cấp Tỉnh/TP (hoặc tương đương)</option>
+				    <option value="3">Cấp Quận/Huyện (hoặc tương đương)</option>
+				    <option value="4">Cấp Phường/Xã (hoặc tương đương)</option>
+				    <option value="5">Cấp chi hội, CLB, tổ, đội, nhóm (hoặc tương đương)</option>
+				  </select>
+				  <i></i> </label>
+			</section> 	
+			<section id="stPosition" name="stPosition">
+                <label class="label">Chức danh</label>
+                <label class="select">
+                  <select id="cboPosition" name="cboPosition" onchange="cboPositionChange(this)">
+					<option value="0">Chọn</option>
+                  </select>
+                  <i></i> </label>
+              </section>           
+              <section id="stPositionNA" name="stPositionNA" style="display: none">
+				 <label class="label">Chức danh khác</label>
+				  <label class="input">
+				  <input type="text" id="txtPositionNA" name="txtPositionNA" >
+                  </label>
+              </section>
+			  <section id="stConcurrently" name="stConcurrently" style="display: none">
+				 <label class="label" id="lblConcurrently" name="lblConcurrently">...</label>
+				   <label class="select">
+				    <select id="cboConcurrently" name="cboConcurrently" onchange="oncboConcurrentlyChange(this)">
+                    <option value="0">Chọn</option>
+					<option value="Có">Có</option>
+					<option value="Không">Không</option>
+                  </select>
+				   </label>
+				   <label class="label" id="lblConcurrently2" name="lblConcurrently2" style="display: none">Chức danh kiêm nhiệm của bạn là gì?</label>
+				  <label class="input" >
+				  <input type="text" id="txtConcurrently" name="txtConcurrently" style="display: none" autocomplete="off">
+                  </label>
+              </section> 	
+              <section id="stProvincial" name="stProvincial" style="display: none">
+                <label class="label">Tỉnh/ Thành phố/ Đơn vị tương đương</label>
+                <label class="select">
+                  <input type="hidden" name="txtProvincial" id="txtProvincial" autocomplete="off">
+                  <select id="cboProvincial" name="cboProvincial" onchange="onCboProvincialsChange(this)">
+                    <option value="0">Chọn</option>
+                  </select>
+                  </label>
+              </section>			 
+              <section id="stDistricts" name="stDistricts" style="display: none">
+                <label class="label">Huyện/ Thị xã/ Thành phố trực thuộc tỉnh/ Đơn vị tương đương</label>
+                <label class="select" >
+                  <input type="hidden" name="txtDistricts" id="txtDistricts">
+                  <select id="cboDistricts" name="cboDistricts" onchange="onCboDistrictsChange(this)">
+                    <option value="0">Chọn</option>
+                  </select>
+                  </label>
+              </section>
+			  <section id="stDistrictsNA" name="stDistrictsNA" style="display: none">
+				 <label class="label">Vui lòng tự nhập tên đơn vị Hội</label>
+				  <label class="input">
+				  <input type="text" id="txtDistrictsNA" name="txtDistrictsNA" autocomplete="off">
+                  </label>
+              </section> 
+              <section id="stWards" name="stWards" style="display: none">
+                <label class="label">Xã/ Phường/Thị trấn/ Đơn vị tương đương</label>
+                <label class="select" >
+                  <input type="hidden" name="txtWards" id="txtWards">
+                  <select  id="cboWards" name="cboWards" onchange="onCboWards(this)" >
+                    <option value="0">Chọn</option>
+                  </select>
+                 </label>
+             </section>
+			 <section id="stWardsNA" name="stWardsNA" style="display: none">
+				 <label class="label">Vui lòng tự nhập tên đơn vị Hội</label>
+				  <label class="input">
+				  <input type="text" id="txtWardsNA" name="txtWardsNA" autocomplete="off">
+                  </label>
+             </section> 
+			 <section id="stBranch" name="stBranch" style="display: none">
+                <label class="label">Chi hội/ CLB/ Tổ/ Đội/ Nhóm</label>
+                <label class="select" >
+                  <input type="hidden" name="txtBranch" id="txtBranch">
+                  <select  id="cboBranch" name="cboBranch" onchange="onCboBranch(this)" >
+                    <option value="0">Chọn</option>
+                  </select>
+				  </label>
+				</section> 			 
+				<section id="stBranchNA" name="stBranchNA" style="display: none">
+				 <label class="label">Tên chi hội/ CLB/ Tổ/ Đội/ Nhóm khác</label>
+				  <label class="input">
+				  <input type="text" id="txtBranchNA" name="txtBranchNA" autocomplete="off">
+                  </label>
+                </section> 
+			    <section id="stName" name="stName">
+                <label class="label">Họ và tên</label>
+                <label class="input">
+                  <input type="text" id="txtFullName" name="txtFullName" required=true autocomplete="off">
+                </label>
+              </section>
+          	 <section id="stBirthday" name="stBirthday">
+                <label class="label">Ngày sinh (DD/MM/YYYY)</label>
+                <label class="input">
+                 <input type="date" id="txtBirthday" name="txtBirthday" max="22-01-2030" value="1985-05-22"><br>
+                </label>
+              </section>
+              <section id="stPhone" name="stPhone">
+                <label class="label">Số ĐT liên hệ</label>
+                <label class="input">
+                  <input type="text" id="txtPhone" name="txtPhone" required=true autocomplete="off">
+                </label>
+              </section>
+			 <section id="stEmail" name="stEmail">
+                <label class="label">Email</label>
+                <label class="input">
+                  <input type="text" id="txtEmail" name="txtEmail" required=true autocomplete="off">
+                </label>
+              </section>
+<!--
+			   <section>
+				<label class="label">Ảnh đại diện</label>
+				<label class="label">
+				  <input type="file" id="txtAvatar" name="txtAvatar"  
+			   accept="image/*" class="input-file .button" >
+				</label>
+			  </section>
+				 <div id="progress_bar">
+					<div class="percent">0%</div>
+				  </div>			 
+-->
+            </fieldset>
+            <footer align="center">
+              <button type="button" value="Submit" id="btnSend" class="button" onClick="SaveObject()" name="btnSend">Kết thúc</button>
+				
+            </footer>
+          </form>
+          <!--/ Red color scheme --> 
+        </div>
+</body>
+<script type='text/javascript' src="/js/register.js?vesion=1.1.64"></script>
+</html>

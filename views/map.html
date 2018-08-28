@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyB5Ku0e4U5pBW1GXdduH01dZ6W7w7yCLD4&callback'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+      var data = new google.visualization.DataTable();
+          data.addColumn('string','Country');
+          data.addColumn('number','Popularity');
+    	data.addRows([
+		[{f:'An Giang', v:'VN-44'},3], 
+		[{f:'Bà Rịa–Vũng Tàu', v:'VN-43'},5], 
+		[{f:'Bắc Giang', v:'VN-54'},10], 
+		[{f:'Bắc Kạn', v:'VN-53'},7], 
+		[{f:'Bạc Liêu', v:'VN-55'},6], 
+		[{f:'Bắc Ninh', v:'VN-56'},3], 
+		[{f:'Bến Tre', v:'VN-50'},4], 
+		[{f:'Bình Định', v:'VN-31'},3], 
+		[{f:'Bình Dương', v:'VN-57'},6], 
+		[{f:'Bình Phước', v:'VN-58'},3], 
+		[{f:'Bình Thuận', v:'VN-40'},7], 
+		[{f:'Cà Mau', v:'VN-59'},9], 
+		[{f:'Cao Bằng', v:'VN-04'},8], 
+		[{f:'Đắk Lắk', v:'VN-33'},1], 
+		[{f:'Đắk Nông', v:'VN-72'},10], 
+		[{f:'Điện Biên', v:'VN-71'},9], 
+		[{f:'Đồng Nai', v:'VN-39'},8], 
+		[{f:'Đồng Tháp', v:'VN-45'},8], 
+		[{f:'Gia Lai', v:'VN-30'},2], 
+		[{f:'Hà Giang', v:'VN-03'},9], 
+		[{f:'Hà Nam', v:'VN-63'},5], 
+		[{f:'Hà Tây', v:'VN-15'},4], 
+		[{f:'Hà Tĩnh', v:'VN-23'},10], 
+		[{f:'Hải Dương', v:'VN-61'},4], 
+		[{f:'Hậu Giang', v:'VN-73'},4], 
+		[{f:'Hòa Bình', v:'VN-14'},7], 
+		[{f:'Hưng Yên', v:'VN-66'},2], 
+		[{f:'Khánh Hòa', v:'VN-34'},5], 
+		[{f:'Kiên Giang', v:'VN-47'},4], 
+		[{f:'Kon Tum', v:'VN-28'},4], 
+		[{f:'Lai Châu', v:'VN-01'},9], 
+		[{f:'Lâm Đồng', v:'VN-35'},6], 
+		[{f:'Lạng Sơn', v:'VN-09'},9], 
+		[{f:'Lào Cai', v:'VN-02'},9], 
+		[{f:'Long An', v:'VN-41'},2], 
+		[{f:'Nam Định', v:'VN-67'},4], 
+		[{f:'Nghệ An', v:'VN-22'},2], 
+		[{f:'Ninh Bình', v:'VN-18'},6], 
+		[{f:'Ninh Thuận', v:'VN-36'},7], 
+		[{f:'Phú Thọ', v:'VN-68'},7], 
+		[{f:'Phú Yên', v:'VN-32'},8], 
+		[{f:'Quảng Bình', v:'VN-24'},4], 
+		[{f:'Quảng Nam', v:'VN-27'},6], 
+		[{f:'Quảng Ngãi', v:'VN-29'},5], 
+		[{f:'Quảng Ninh', v:'VN-13'},5], 
+		[{f:'Quảng Trị', v:'VN-25'},6], 
+		[{f:'Sóc Trăng', v:'VN-52'},4], 
+		[{f:'Sơn La', v:'VN-05'},2], 
+		[{f:'Tây Ninh', v:'VN-37'},3], 
+		[{f:'Thái Bình', v:'VN-20'},5], 
+		[{f:'Thái Nguyên', v:'VN-69'},1], 
+		[{f:'Thanh Hóa', v:'VN-21'},8], 
+		[{f:'Thừa Thiên–Huế', v:'VN-26'},8], 
+		[{f:'Tiền Giang', v:'VN-46'},10], 
+		[{f:'Trà Vinh', v:'VN-51'},1], 
+		[{f:'Tuyên Quang', v:'VN-07'},2], 
+		[{f:'Vĩnh Long', v:'VN-49'},6], 
+		[{f:'Vĩnh Phúc', v:'VN-70'},3], 
+		[{f:'Yên Bái', v:'VN-06'},6], 
+		[{f:'Cần Thơ', v:'VN-CT'},9], 
+		[{f:'Đà Nẵng', v:'VN-DN'},7], 
+		[{f:'Hà Nội', v:'VN-HN'},5], 
+		[{f:'Hải Phòng', v:'VN-HP'},4], 
+		[{f:'Hồ Chí Minh (Sài Gòn)', v:'VN-SG'},5]
+		]);
+		  
+
+        var options = {region: 'VN',
+					   displayMode: 'regions',
+					   resolution: 'provinces',
+					   colorAxis: {colors: ['#00ff80',	'#00bfff' , '#0000ff','#ff0040']}
+					   
+					  };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="regions_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

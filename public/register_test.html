@@ -1,0 +1,275 @@
+<html>
+	<head>
+		<title>Điểm danh</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+		
+		<link rel="stylesheet" href="css/demo.css">
+		<link rel="stylesheet" href="css/sky-forms.css">
+		<link rel="stylesheet" href="css/sky-forms-blue.css">
+		<script src="/js/jquery-3.3.1.min.js"></script> 
+		
+	</head>
+	<body class="bg-blue">
+	<script>
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'Messenger'));
+		window.extAsyncInit = () => {
+			///var isSupported = MessengerExtensions.isInExtension(); 
+			//alert(isSupported);
+			// TODO: How to parse env file from here?
+			MessengerExtensions.getSupportedFeatures(function success(result) {
+				let features = result.supported_features;
+				if (features.includes("context")) {
+					MessengerExtensions.getContext('135519407158918',
+						function success(thread_context) {
+							// success
+							console.log("success :" +thread_context.psid);
+							document.getElementById("psid").value = thread_context.psid;
+						},
+						function error(err) {
+							// error
+							console.log("Err:"+err);
+						}
+					);
+				}
+			}, function error(err) {
+				// error retrieving supported features
+				console.log("Err:"+err);
+			});
+			document.getElementById('submitButton').addEventListener('click', () => {
+				MessengerExtensions.requestCloseBrowser(function success() {
+					console.log("Webview closing");
+				}, function error(err) {
+				   console.log("getElementById Err:"+err);
+				});
+			});		
+			 
+			
+		
+		};
+	</script>
+		<div class="body">		
+		
+			<!-- Red color scheme -->			
+			<form action="/registerspostback.bot" method="get" class="sky-form">
+			  <header align="center" ><div class="header" align="center">			 
+				<table width="100%" border="0" align="center">
+				  <tbody>
+					<tr>
+					  <td width="20"><img src="/img/logo.png" alt="logo" /></td>
+					<td width="5"></td>
+					   <td>Điểm danh</td>
+					</tr>
+				  </tbody>
+				</table>				
+				</div></header>
+			  
+				<input type="hidden" name="psid" id="psid">   
+				<fieldset>
+					<section>
+						<label class="label">Họ và tên</label>
+						<label class="input">
+							<input type="text" id="txtFullName" name="txtFullName" required=true>
+						</label>
+					</section>					
+					<section>
+						<label class="label">Ngày sinh (DD/MM/YYYY)</label>
+						<label class="input">
+							<table width="100%" border="0" align="center">
+							  <tbody>
+								<tr>								  
+								  <td width="24%"><input type="number" id="txtDay" name="txtDay" min="1" max="31" maxlength="2" value="22" required=true></td>
+								  <td>/</td>
+								  <td width="24%"><input type="number" id="txtMonth" name="txtMonth" min="1" max="12" maxlength="2" value="04" required=true></td>
+								  <td>/</td>
+								  <td width="32%"><input type="number" id="txtYear" name="txtYear" min="1900" max="3000" maxlength="4" value="1985" required=true></td>
+								  <td width="20%" align="left"></td>
+								</tr>
+							  </tbody>
+							</table>
+						</label>
+					</section>						
+					<section>
+						<label class="label">Chức danh</label>
+						<label class="select">
+							<select id="cboPosition" name="cboPosition">
+								<option value="Bí thư Đoàn xã">Bí thư Đoàn xã</option>
+								<option value="Phó bí thư Đoàn xã">Phó bí thư Đoàn xã</option>
+								<option value="Chủ tịch Hội LHTN xã">Chủ tịch Hội LHTN xã</option>
+								<option value="Phó Chủ tịch Hội LHTN xã">Phó Chủ tịch Hội LHTN xã</option>
+								<option value="Khác">Khác</option>
+							</select>
+							<i></i>
+						</label>
+					</section>
+					<section>
+						<label class="label">Tỉnh / Thành phố</label>
+						<label class="select">
+							<input type="hidden" name="txtProvincial" id="txtProvincial">  
+							<select id="cboProvincial" name="cboProvincial" onchange="onCboProvincialsChange(this)">
+								<option value="0">Chọn</option>								
+							</select>
+							<i></i>
+						</label>
+					</section>
+					<section>
+						<label class="label">Huyện / Thành phố trực thuộc tỉnh</label>
+						<label class="select" >
+							<input type="hidden" name="txtDistricts" id="txtDistricts"> 
+							<select id="cboDistricts" name="cboDistricts" onchange="onCboDistrictsChange(this)">
+								<option value="0">Chọn</option>								
+							</select>
+							<i></i>
+						</label>
+					</section>
+					<section>
+						<label class="label">Phường / Xã </label>
+						<label class="select" >
+							<input type="hidden" name="txtWards" id="txtWards">
+							<select  id="cboWards" name="cboWards" onchange="onCboWards(this)">
+								<option value="Secretary">Chọn</option>
+								
+							</select>
+							<i></i>
+						</label>
+					</section>				
+					<section>
+						<label class="label">Số ĐT liên hệ</label>
+						<label class="input">
+							<input type="text" id="txtPhone" name="txtPhone" required=true>
+						</label>
+					</section>	
+				</fieldset>			
+
+				<footer align="center">
+					<button type="submit" value="Submit" id="submitButton" class="button">Đồng ý</button>					
+				</footer>
+			</form>
+			<!--/ Red color scheme -->			
+		</div>
+	</body>
+	<script type='text/javascript'>
+	function LoadCboProvincials()
+	{   var  selectElemRef = document.getElementById("cboProvincial");
+		var objProvincials;   
+		$.ajax({
+		dataType: "json",
+		url: "https://nongsanvn.herokuapp.com/getProvincial",
+		data: objProvincials,
+		success: function(data) {
+			objProvincials = data;
+			var html = '';
+			//var x = document.getElementById("mySelect");
+			//removeOptions($("#cboProvincial"));
+			while (selectElemRef.length> 0) {
+				selectElemRef.remove(0);
+			} 
+			for (var i = 0, len = objProvincials.length; i < len; ++i) {			
+				var o = new Option(objProvincials[i].Name,  objProvincials[i]._id);
+				//o.selected=true;
+				$("#cboProvincial").append(o);
+			}
+			if(cboProvincial.length>1)
+			{
+			  document.getElementById("cboDistricts").selectedIndex=1;
+			  onCboProvincialsChange(document.getElementById("cboProvincial"));			 document.getElementById("txtProvincial").value=document.getElementById("cboProvincial")[1].text;
+			}
+			//$('#cboProvincial').append(html);
+			//$('#cboProvincial').select
+		  }
+		});
+	};
+	
+	function onCboProvincialsChange(event)
+	{
+	    //var selectElement = event.target;
+	    var value = event.value;
+		document.getElementById("txtProvincial").value=event[event.selectedIndex].text;
+		//alert(value);
+		//alert(document.getElementById("cboProvincial").value)
+		//alert(event);
+		LoadCboDistricts(value);
+	};
+	
+    function LoadCboDistricts(idProvincial)
+	{   var  selectElemRef = document.getElementById("cboDistricts");
+		var objDistricts;   
+		$.ajax({
+		dataType: "json",
+		url: "https://nongsanvn.herokuapp.com/getDistrict?idProvincial="+idProvincial,
+		data: objDistricts,
+		success: function(data) {
+			objDistricts = data;	
+            while (selectElemRef.length> 0) {
+				selectElemRef.remove(0);
+			} 			
+			for (var i = 0, len = objDistricts.length; i < len; ++i) {			
+				var o = new Option(objDistricts[i].Name,  objDistricts[i]._id);
+				//o.selected=true;
+				$("#cboDistricts").append(o);
+			}
+			if(objDistricts.length>1)
+			{
+			  document.getElementById("cboDistricts").selectedIndex=1;
+			  onCboDistrictsChange(document.getElementById("cboDistricts"));
+			  document.getElementById("txtDistricts").value=document.getElementById("cboDistricts")[1].text;
+			}
+			//$('#cboDistricts').append(html);
+		  }
+		});
+	};
+	function onCboDistrictsChange(event)
+	{
+	    
+	    var value = event.value;
+		document.getElementById("txtDistricts").value=event[event.selectedIndex].text;		
+		LoadCboWards(value);
+	};
+	
+	function LoadCboWards(idDistrict)
+	{	var  selectElemRef = document.getElementById("cboWards");
+		var objWards;   
+		$.ajax({
+		dataType: "json",
+		url: "https://nongsanvn.herokuapp.com/getWards?idDistrict="+idDistrict,
+		data: objWards,
+		success: function(data) {
+			objWards = data;
+			while (selectElemRef.length> 0) {
+				selectElemRef.remove(0);
+			} 
+			for (var i = 0, len = objWards.length; i < len; ++i) {			
+				var o = new Option(objWards[i].Name,  objWards[i]._id);
+				//o.selected=true;
+				$("#cboWards").append(o);
+				
+			}
+			if(objWards.length>1)
+			{
+			  document.getElementById("cboWards").selectedIndex=1;				
+			  document.getElementById("txtWards").value=document.getElementById("cboWards")[1].text;
+			  //alert(document.getElementById("cboWards")[0].text);
+			}
+			//$('#cboWards').append(html);
+		  }
+		});
+	};
+	function onCboWards(event)
+	{	    
+	    var value = event.value;
+		document.getElementById("txtWards").value=event[event.selectedIndex].text;
+		//alert(event);
+	};
+  LoadCboProvincials();
+</script>
+</html>

@@ -1,0 +1,122 @@
+<html>
+<head Content-Type="application/json">
+<title>Điểm danh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/sky-forms.css?v=1.1.1.1">
+<link rel="stylesheet" href="css/sky-forms-blue.css">
+<script src="/js/jquery-3.3.1.min.js"></script>
+<style>
+form {
+	background: url("img/logo.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 300px 300px;
+}
+#progress_bar {
+	margin: 10px 0;
+	padding: 3px;
+	border: 1px solid #000;
+	font-size: 14px;
+	clear: both;
+	opacity: 0;
+	-moz-transition: opacity 1s linear;
+	-o-transition: opacity 1s linear;
+	-webkit-transition: opacity 1s linear;
+}
+#progress_bar.loading {
+	opacity: 1.0;
+}
+#progress_bar .percent {
+	background-color: #99ccff;
+	height: auto;
+	width: 0;
+}
+</style>
+</head>
+<body class="bg-blue">
+<script type='text/javascript' src="/js/psid.js?vesion=1"></script>
+<div class="body">           
+          <!-- Red color scheme -->
+          <form action="/registerspostback.bot" method="post" class="sky-form" autautocomplete="off">
+            <header align="center" >
+              <div class="headerMin" align="center">
+                <table width="100%" border="0" align="center">
+                  <tbody>
+                    <tr>                      
+                      <td>Thu thập thông tin</td>					  
+                    </tr>
+					 <tr>
+						 <td style="font-size: 10px;font-style: italic;">(Để phục vụ cho mục đích xây dựng CSDL của Hội, Cơ quan thường trực Trung ương Hội cam kết không cung cấp, tiết lộ thông tin cho bên thứ 3)</td>
+					  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </header>
+            <input type="hidden" name="psid" id="psid">
+            <fieldset>				
+              <section id="stProvincial" name="stProvincial" >
+                <label class="label">Tỉnh/ Thành phố/ Đơn vị tương đương</label>
+                <label class="select">
+                  <input type="hidden" name="txtProvincial" id="txtProvincial" autocomplete="off">
+                  <select id="cboProvincial" name="cboProvincial" onchange="onCboProvincialsChange(this)">
+                    <option value="0">Chọn</option>
+                  </select>
+                  </label>
+              </section>			 
+              <section id="stDistricts" name="stDistricts" >
+                <label class="label">Huyện/ Thị xã/ Thành phố trực thuộc tỉnh/ Đơn vị tương đương</label>
+                <label class="select" >
+                  <input type="hidden" name="txtDistricts" id="txtDistricts">
+                  <select id="cboDistricts" name="cboDistricts" onchange="onCboDistrictsChange(this)">
+                    <option value="0">Chọn</option>
+                  </select>
+                  </label>
+              </section>			  
+              <section id="stWards" name="stWards" >
+                <label class="label">Xã/ Phường/Thị trấn/ Đơn vị tương đương</label>
+                <label class="select" >
+                  <input type="hidden" name="txtWards" id="txtWards">
+                  <select  id="cboWards" name="cboWards" onchange="onCboWards(this)" >
+                    <option value="0">Chọn</option>
+                  </select>
+                 </label>
+             </section>			
+			    <section id="stName" name="stName">
+                <label class="label">Họ và tên</label>
+                <label class="input">
+                  <input type="text" id="txtFullName" name="txtFullName" required=true autocomplete="off">
+                </label>
+              </section>
+              <section id="stBirthday" name="stBirthday">
+                <label class="label">Ngày sinh (DD/MM/YYYY)</label>
+                <label class="input">
+                 <input type="date" id="txtBirthday" name="txtBirthday" max="22-01-2030" value="1985-05-22"><br>
+                </label>
+              </section>
+              <section id="stPhone" name="stPhone">
+                <label class="label">Số ĐT liên hệ</label>
+                <label class="input">
+                  <input type="text" id="txtPhone" name="txtPhone" required=true autocomplete="off">
+                </label>
+              </section>
+			 <section id="stEmail" name="stEmail">
+                <label class="label">Email</label>
+                <label class="input">
+                  <input type="text" id="txtEmail" name="txtEmail" required=true autocomplete="off">
+                </label>
+              </section>
+
+            </fieldset>
+            <footer align="center">
+              <button type="button" value="Submit" id="btnSend" class="button" onClick="SaveObject()" name="btnSend">Kết thúc</button>
+				
+            </footer>
+          </form>
+          <!--/ Red color scheme --> 
+        </div>
+</body>
+<script type='text/javascript' src="/js/basicregister.js?vesion=1.1.2"></script>
+</html>

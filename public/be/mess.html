@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-clearmin.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/roboto.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <title>NSVN</title>
+  </head>
+  <body class="cm-no-transition cm-1-navbar">
+    <div id="cm-menu">
+      <nav class="cm-navbar cm-navbar-primary">
+        <div class="cm-flex"><div class="cm-logo"></div></div>
+        <div class="btn btn-primary md-menu-white" data-toggle="cm-menu"></div>
+      </nav>
+      <div id="cm-menu-content">
+        <div id="cm-menu-items-wrapper">
+          <div id="cm-menu-scroller">
+            <ul class="cm-menu-items">
+              <li class="active"><a href="index.html" class="sf-dashboard">Điều khiển</a></li>
+			  <li><a href="ai.html" class="sf-cogs">Cấu hình AI</a></li>
+			  <li><a href="membernew.html" class="sf-profile-group">Thành viên</a></li>
+			  <li><a href="mess.html" class="sf-box-out">Gửi tin</a></li>
+			  <li><a href="productnew.html" class="sf-shop">Sản phẩm</a></li>
+			  <li><a href="map.html" class="sf-map">Bản đồ</a></li>
+			  <li><a href="analyze.html" class="sf-monitor">Phân tích</a></li>
+				 <li><a href="user.html" class="sf-profile-group">Tài khoản</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="cm-header">
+      <nav class="cm-navbar cm-navbar-primary">
+        <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
+        <div class="cm-flex"><h1>Gửi tin nhắn đồng loạt</h1></div>
+      </nav>
+    </header>
+    <div id="global">
+      <div class="container-fluid">
+       <div class="panel panel-default">
+      <div class="panel-heading">Danh sách tin nhắn đã gửi</div>
+      <div class="panel-body">
+        <div id="d1-c5" style="height:420px">
+          <table width="100%" border="0">
+            <tbody>
+              <tr>
+                <td>
+					<table width="100%" border="0">
+                    <tbody>
+                      <tr>
+                        <td>Nội dung</td>
+                                          
+						<td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="txtMess" name="txtMess" required=true class="form-control" width="80"></td>
+                       					
+                        <td align="right"><button type="button" id="submitButton" width="70" onClick="sendMess()" class="btn btn-primary">Gửi</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+				  </td>
+              </tr>
+              <tr>
+                <td><div id="dvAiMessage"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>  
+      </div>
+      <footer class="cm-footer"><span class="pull-right">&copy; NSVN Inc.</span></footer>
+    </div>
+    <script src="assets/js/lib/jquery-2.1.3.min.js"></script>
+    <script src="assets/js/jquery.mousewheel.min.js"></script>
+    <script src="assets/js/jquery.cookie.min.js"></script>
+    <script src="assets/js/fastclick.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/clearmin.min.js"></script>
+	<script src="../js/mess.js"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Điểm danh</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+	<script>
+			function $_GET(param) {
+			var vars = {};
+			window.location.href.replace( location.hash, '' ).replace( 
+				/[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+				function( m, key, value ) { // callback
+					vars[key] = value !== undefined ? value : '';
+				}
+			);
+
+			if ( param ) {
+				return vars[param] ? vars[param] : null;	
+			}
+			return vars;
+		}
+    </script>
+  </head>
+  <body>
+    <div class="container" align="center">
+      <fieldset>
+        <form action="/" method="post" >
+		  <input id="FromId" name="FromId" type="hidden" value=>
+		  </br>
+          <input id="FullName" name="FullName" type="text" class="ghost-input" placeholder="Nhập họ và tên" required>
+		  </br>
+		  <input id="BrithDay" name="BrithDay" type="text" class="ghost-input" placeholder="Ngày tháng năm sinh" required>
+		   </br>
+		  <input  id="Adress" name="Adress" type="text" class="ghost-input" placeholder="Địa chỉ" required>
+		   </br>
+          <input type="submit" class="ghost-button" value="Điểm danh">
+        </form>
+		
+      </fieldset>
+    </div>
+	<script> 
+		var $_GET = $_GET();
+		fromid = $_GET['fromid'];
+		if(fromid==null || fromid=='undefined')
+		{
+		  //close();		  
+          window.opener = self;
+          setTimeout("window.top.close();", 500);
+		}
+		else
+		{
+			document.getElementById("FromId").innerHTML = fromid;
+			document.getElementById("FromId").value=fromid;
+		}
+	//alert(fromid);
+	</script>
+  </body>
+</html>

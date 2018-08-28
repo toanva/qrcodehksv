@@ -1,0 +1,165 @@
+<html>
+<head Content-Type="application/json">
+<title>Thông tin hội viên</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.52, minimum-scale=0.3">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="icon" type="image/png" href="img/NSVN.png"/>
+<link rel="shortcut icon" href="img/logo.jpg">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/sky-forms.css">
+<link rel="stylesheet" href="css/sky-forms-blue.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="js/jquery-3.3.1.min.js"></script>
+<style>
+.demo-table {
+	border-collapse: collapse;
+	font-size: 12px;
+	width: 100%;
+}
+.demo-table th, .demo-table td {
+	border: 1px solid #e1edff;
+	padding: 7px 17px;
+}
+.demo-table .title {
+	caption-side: bottom;
+	margin-top: 12px;
+}
+/* Table Header */
+.demo-table thead th {
+	background-color: #508abb;
+	color: #FFFFFF;
+	border-color: #6ea1cc !important;
+	text-transform: uppercase;
+}
+/* Table Body */
+.demo-table tbody td {
+	color: #353535;
+}
+.demo-table tbody td:first-child, .demo-table tbody td:last-child, .demo-table tbody td:nth-child(4) {
+}
+.demo-table tbody tr:nth-child(odd) td {
+	background-color: #f4fbff;
+}
+.demo-table tbody tr:hover td {
+	background-color: #ffffa2;
+	border-color: #ffff0f;
+	transition: all .2s;
+}
+/* Table Footer */
+.demo-table tfoot th {
+	background-color: #e5f5ff;
+	text-align: left;
+}
+.demo-table tfoot th:first-child {
+	text-align: left;
+}
+.demo-table tbody td:empty {
+	background-color: #ffcccc;
+}
+.buttons {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+#padre {
+	overflow-x: visible;
+	white-space: nowrap;
+}
+#dvMain {
+	left: 0;
+	position: inherit;
+	overflow: visible;
+	-moz-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-o-transform-origin: top left;
+	-webkit-transform-origin: top left;
+	transform-origin: top left;
+	-moz-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+</style>
+</head>
+
+
+<!-- Red color scheme -->
+<div id="dvMain"> 
+<form method="post" class="sky-form">
+  <input type="hidden" name="psid" id="psid">
+  <table width="100%" border="0" align="center">
+    <tbody>
+      <tr>
+        <td width="20"><img src="img/logoM.png" alt="logo" width="30px" height="30px"/></td>
+        <td width="5"></td>
+        <td align="left">Thông tin hội viên</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+			<table width="100%" border="0" class="demo-table">
+           
+			 <thead>
+              <tr>
+                <th scope="col">Ảnh đại diện</th>
+                <th scope="col">Thông tin</th>
+               
+              </tr>
+			 </thead>
+			 <tbody>
+              <tr>
+                <th scope="row" width="120px" height="120px"><img src="img/logoM.png" alt="Ảnh đại diện" height="120px" width="120px" id="imgAvatar" name="imgAvatar"></th>
+                <td>
+					<div id="dvInfo" name="dvInfo">Đang tải thông tin</div>
+				</td>              
+              </tr>
+            </tbody>
+          </table>
+		  </td>
+      </tr>
+		 <tr>
+        <td colspan="3">
+			<table width="100%" border="1" class="demo-table">
+            <thead>
+              <tr>
+                <th scope="col"  >DANH SÁCH HỘI VIÊN ĐÃ XÁC THỰC</th>               
+            </thead>
+          </table>
+		  </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+			<table width="100%" border="1" class="demo-table">
+            <thead>
+              <tr>
+                <th scope="col" width="120px" >ẢNH ĐẠI DIỆN</th>
+                <th scope="col" >THÔNG TIN</th>                
+              </tr>
+            </thead>
+          </table>
+		  </td>
+      </tr>
+      <tr>
+        <td colspan="3"><div id="dvMemberList" name="dvMemberList"></div></td>
+      </tr>
+      <tr>
+        <td colspan="3"><button type="button" value="Submit" id="btnClose" class="button"  name="btnClose" class="buttons">
+          Đóng
+          </button></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+</div>
+<script type='text/javascript' src="js/info.js?v=1.1.7">
+</script>
+<script type='text/javascript' src="js/psidclose.js?v=1.1.4">
+</script>
+</html>

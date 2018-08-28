@@ -1,0 +1,92 @@
+﻿<html>
+<head Content-Type="application/json">
+<title>Điểm danh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/sky-forms.css?v=1.1.1.1">
+<link rel="stylesheet" href="css/sky-forms-blue.css">
+<script src="/js/jquery-3.3.1.min.js"></script>
+<style>
+form {
+	background: url("img/logo.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 300px 300px;
+}
+#progress_bar {
+	margin: 10px 0;
+	padding: 3px;
+	border: 1px solid #000;
+	font-size: 14px;
+	clear: both;
+	opacity: 0;
+	-moz-transition: opacity 1s linear;
+	-o-transition: opacity 1s linear;
+	-webkit-transition: opacity 1s linear;
+}
+#progress_bar.loading {
+	opacity: 1.0;
+}
+#progress_bar .percent {
+	background-color: #99ccff;
+	height: auto;
+	width: 0;
+}
+</style>
+</head>
+<body class="bg-blue">
+    <script type='text/javascript' src="/js/psid.js?vesion=1"></script>
+    <form action="/document" method="post" class="sky-form" autautocomplete="off">
+        <header align="center">
+            <div class="headerMin" align="center">
+                <table width="100%" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td>Thông tin cá nhân</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </header>
+        <input type="hidden" name="psid" id="psid">
+        <fieldset>
+            <section id="stName" name="stName">
+                <label class="label">Họ và tên</label>
+                <label class="input">
+                    <input type="text" id="txtFullName" name="txtFullName" required=true autocomplete="off">
+                </label>
+            </section>
+            <section id="stBirthday" name="stBirthday">
+                <label class="label">Ngày sinh (DD/MM/YYYY)</label>
+                <label class="input">
+                    <input type="date" id="txtBirthday" name="txtBirthday" max="22-01-2030" value="1985-05-22"><br>
+                </label>
+            </section>
+            <section id="stAddress" name="stAddress">
+                <label class="label">Địa chỉ</label>
+                <label class="input">
+                    <input type="text" id="txtAddress" name="txtAddress" required=true autocomplete="off">
+                </label>
+            </section>
+            <section id="stCMT" name="stCMT">
+                <label class="label">Số CMT</label>
+                <label class="input">
+                    <input type="text" id="txtCMT" name="txtCMT" required=true autocomplete="off">
+                </label>
+            </section>
+            <section id="stPhone" name="stPhone">
+                <label class="label">Số ĐT liên hệ</label>
+                <label class="input">
+                    <input type="text" id="txtPhone" name="txtPhone" required=true autocomplete="off">
+                </label>
+            </section>
+        </fieldset>
+        <footer align="center">
+            <button type="button" value="Submit" id="btnSend" class="button" onClick="SaveObject()" name="btnSend">Lưu lại</button>
+        </footer>
+    </form>
+</body>
+<script type='text/javascript' src="/js/document.js?vesion=1.1.2"></script>
+</html>

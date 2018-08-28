@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-clearmin.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/roboto.css">
+<link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
+<link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../css/jquery-ui-git.css" />
+<link rel="stylesheet" type="text/css" href="../css/theme.css" />
+<link rel="stylesheet" type="text/css" href="../css/jsgrid.css" />
+<link rel="stylesheet" type="text/css" href="../css/demos.css" />
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/jquery-migrate-1.4.1.min.js"></script>
+<script src="../js/jquery-ui-git.js"></script>
+<script src="../js/jsgrid.core.js"></script>
+<script src="../js/jsgrid.load-indicator.js"></script>
+<script src="../js/jsgrid.load-strategies.js"></script>
+<script src="../js/jsgrid.sort-strategies.js"></script>
+<script src="../js/jsgrid.field.js"></script>
+<script src="../js/fields/jsgrid.field.text.js"></script>
+<script src="../js/fields/jsgrid.field.number.js"></script>
+<script src="../js/fields/jsgrid.field.select.js"></script>
+<script src="../js/fields/jsgrid.field.checkbox.js"></script>
+<script src="../js/fields/jsgrid.field.control.js"></script>
+<title>NSVN-Ai</title>
+</head>
+<body class="cm-no-transition cm-1-navbar">
+<div id="cm-menu">
+  <nav class="cm-navbar cm-navbar-primary">
+    <div class="cm-flex">
+      <div class="cm-logo"></div>
+    </div>
+    <div class="btn btn-primary md-menu-white" data-toggle="cm-menu"></div>
+  </nav>
+  <div id="cm-menu-content">
+    <div id="cm-menu-items-wrapper">
+      <div id="cm-menu-scroller">
+        <ul class="cm-menu-items">
+          <li><a href="index.html" class="sf-dashboard">Điều khiển</a></li>
+          <li class="active"><a href="ai.html" class="sf-cogs">Cấu hình AI</a></li>
+          <li><a href="membernew.html" class="sf-profile-group">Thành viên</a></li>
+          <li><a href="mess.html" class="sf-box-out">Gửi tin</a></li>
+          <li><a href="productnew.html" class="sf-shop">Sản phẩm</a></li>
+          <li><a href="map.html" class="sf-map">Bản đồ</a></li>
+          <li><a href="analyze.html" class="sf-monitor">Phân tích</a></li>
+		   <li><a href="user.html" class="sf-profile-group">Tài khoản</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<header id="cm-header">
+  <nav class="cm-navbar cm-navbar-primary">
+    <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
+    <div class="cm-flex">
+      <h1>Quản lý Ai</h1>
+    </div>
+  </nav>
+</header>
+<div id="global">
+  <div class="container-fluid">
+	<div class="row">
+    <div class="row cm-fix-height">
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Thêm mới đối thoại</div>
+          <div class="panel-body">
+            <table width="100%" border="0" align="center">
+              <tbody align="left">
+                <tr>
+                  <td style="white-space:nowrap">Chủ đề</td>
+                </tr>
+                <tr>
+                  <td ><select id="cboBlockStatus" name="cboBlockStatus" onchange="#" width="80" class="form-control">
+                      <option value="ACTIVE">Chế độ hỏi</option>
+                      <option value="EXAM">Chế độ thi</option>
+                      <option value="LEARN">Chế độ học</option>
+                    </select></td>
+                </tr>
+                <tr>
+                  <td style="white-space:nowrap">Câu hỏi</td>
+                </tr>
+                <tr>
+                  <td><textarea style="resize: none;width: 100%;height: 70px" id="txtQuestion" name="txtQuestion"></textarea></td>
+                </tr>
+                <tr>
+                  <td style="white-space:nowrap">Câu trả lời</td>
+                </tr>
+                <tr>
+                  <td><textarea id="txtAnswer"  name="txtAnswer" style="resize: none;width: 100%;height: 100px"></textarea></td>
+                </tr>
+                <tr>
+                  <td align="center"><button type="button" id="btnSaveAi" width="70" onClick="SaveAi();" class="btn btn-primary" style="align-items: center">Thêm mới</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Danh sách chủ đề</div>
+          <div class="panel-body">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Mã</th>
+                  <th>Tên chủ đề</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>ACTIVE</td>
+                  <td>Chế độ hỏi</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>EXAM</td>
+                  <td>Chế độ thi</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>LEARN</td>
+                  <td>Chế độ học</td>
+                </tr>
+              </tbody>
+            </table>
+            <table width="100%" border="0" align="center">
+              <tbody align="center">
+                <tr>
+                  <td>Mã</td>
+                  <td><input type="text" id="txtCode" name="txtCode" required=true class="form-control" width="30"></td>
+                </tr>
+                <tr>
+                  <td>Tên chủ đề</td>
+                  <td><input type="text" id="txtName" name="txtName" required=true class="form-control" width="60"></td>
+                </tr>
+                <tr height="10">
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr align="right">
+                  <td colspan="2" align="center" valign="bottom"><button type="button" id="btnSaveBlockStatus" width="70" onClick="SaveAi();" class="btn btn-primary" style="align-items: center">Thêm mới</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Danh sách đối thoại</div>
+      <div class="panel-body">
+        <div id="d1-c5" style="height:420px">
+          <table width="100%" border="0">
+            <tbody>
+              <tr>
+                <td>
+					<table width="100%" border="0">
+                    <tbody>
+                      <tr>
+                        <td>Câu hỏi</td>
+                        <td>Chủ đề</td>
+                        <td>Ngày tạo</td>
+                        <td>Trạng thái</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="txtQuestion" name="txtQuestion" required=true class="form-control" width="60"></td>
+                        <td><select id="cboBlockStatus" name="cboBlockStatus" onchange="#" width="80" class="form-control">
+                            <option value="ACTIVE">Chế độ hỏi</option>
+                            <option value="EXAM">Chế độ thi</option>
+                            <option value="LEARN">Chế độ học</option>
+                          </select></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><button type="button" id="submitButton" width="70" onClick="SearchAiMessage()" class="btn btn-primary">Tìm kiếm</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+				  </td>
+              </tr>
+              <tr>
+                <td><div id="dvAiMessage"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>  
+  </div>
+<footer class="cm-footer"><span class="pull-right">&copy; NSVN KYC.NET.VN Inc.</span></footer>
+</div>
+<script src="assets/js/jquery.mousewheel.min.js"></script> 
+<script src="assets/js/jquery.cookie.min.js"></script> 
+<script src="assets/js/fastclick.min.js"></script> 
+<script src="assets/js/bootstrap.min.js"></script> 
+<script src="assets/js/clearmin.min.js"></script> 
+<script src="../js/ai.js"></script>
+</body>
+</html>

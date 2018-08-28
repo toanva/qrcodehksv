@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-clearmin.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/roboto.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/jquery-ui-git.css" />
+	<link rel="stylesheet" type="text/css" href="../css/theme.css" />
+	<link rel="stylesheet" type="text/css" href="../css/jsgrid.css" />
+	<link rel="stylesheet" type="text/css" href="../css/demos.css" />
+	<style>
+        .client-photo { 
+			float: left; 
+			margin: 2px 20px 2px 10px;  
+			display:block;
+            width: 125px;
+            height:125px;
+            overflow:hidden;
+		}
+        .client-photo img { 
+			border-radius: 50%; 
+			border: 1px solid #ddd; 
+			width:100%;
+			height:100%;
+		}
+        .client-info { margin-top: 10px; }
+        .client-info p { line-height: 17px; }
+    </style>
+	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="../js/jquery-migrate-1.4.1.min.js"></script>
+	<script src="../js/jquery-ui-git.js"></script>
+	<script src="../js/jsgrid.core.js"></script>
+	<script src="../js/jsgrid.load-indicator.js"></script>
+	<script src="../js/jsgrid.load-strategies.js"></script>
+	<script src="../js/jsgrid.sort-strategies.js"></script>
+	<script src="../js/jsgrid.field.js"></script>
+	<script src="../js/fields/jsgrid.field.text.js"></script>
+	<script src="../js/fields/jsgrid.field.number.js"></script>
+	<script src="../js/fields/jsgrid.field.select.js"></script>
+	<script src="../js/fields/jsgrid.field.checkbox.js"></script>
+	<script src="../js/fields/jsgrid.field.control.js"></script>
+    <title>NSVN</title>
+  </head>
+  <body class="cm-no-transition cm-1-navbar">
+    <div id="cm-menu">
+      <nav class="cm-navbar cm-navbar-primary">
+        <div class="cm-flex"><div class="cm-logo"></div></div>
+        <div class="btn btn-primary md-menu-white" data-toggle="cm-menu"></div>
+      </nav>
+      <div id="cm-menu-content">
+        <div id="cm-menu-items-wrapper">
+          <div id="cm-menu-scroller">
+            <ul class="cm-menu-items">
+              <li><a href="index.html" class="sf-dashboard">Điều khiển</a></li>
+			  <li><a href="ai.html" class="sf-cogs">Cấu hình AI</a></li>
+			  <li><a href="member.html" class="sf-profile-group">Thành viên</a></li>
+			  <li><a href="mess.html" class="sf-box-out">Gửi tin</a></li>
+			  <li class="active"><a href="product.html" class="sf-shop">Sản phẩm</a></li>
+			  <li><a href="map.html" class="sf-map">Bản đồ</a></li>
+			  <li><a href="analyze.html" class="sf-monitor">Phân tích</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="cm-header">
+      <nav class="cm-navbar cm-navbar-primary">
+        <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
+        <div class="cm-flex"><h1>Thông tin sản phẩm</h1></div>
+      </nav>
+    </header>
+    <div id="global">
+      <div class="container-fluid">
+        <div class="panel panel-default">
+           <div class="panel-body">
+        <table width="100%" border="0" height="600px">
+          <tbody>
+            <tr>
+              <td ><table width="100%" border="0" align="center">
+                  <tbody valign="middle" align="center">
+                    <tr align="center">
+                      <td><label class="col-sm-2 control-label">Tên</label></td>
+                      <td><label class="col-sm-2 control-label">Tỉnh</label></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr align="center">
+                      <td width="100"><input type="text" id="txtName" name="txtName" required=true class="form-control" width="60"></td>
+                      <td width="120">
+						 <select id="cboProvincial" name="cboProvincial" width="80" class="form-control">
+                          <option value="0">Tất cả</option>
+                        </select></td>
+                      <td width="96"></td>
+                      <td width="84"></td>
+                      <td width="99"></td>
+                      <td width="94"><button type="button" value="Submit" id="submitButton" width="70" onClick="SearcProduct2()" class="btn btn-primary">Tìm kiếm</button></td>
+                    </tr>
+                  </tbody>
+                </table></td>
+            </tr>
+            <tr height="570">
+              <td valign="top" align="center"><div id="dvGrdProduct"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+        </div>
+      </div>
+      <footer class="cm-footer"><span class="pull-right">&copy; NSVN KYC.NET.VN Inc.</span></footer>
+    </div>
+    <script src="assets/js/jquery.mousewheel.min.js"></script> 
+	<script src="assets/js/jquery.cookie.min.js"></script> 
+	<script src="assets/js/fastclick.min.js"></script> 
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/clearmin.min.js"></script> 
+	<script src="../js/product.js"></script>
+  </body>
+</html>

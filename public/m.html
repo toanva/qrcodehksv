@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add marker vào map</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+</head>
+<body>
+<div class="divContent">
+    <div style="width:800px; height:400px; left:10px; border:1px solid;" id="divMap"></div>
+</div>
+    <script src="https://developers.vietbando.com/V2/Scripts/vietbandomapsapi.js?key=c918c2a7-3084-4713-9739-9ed7b2413b17" type="text/javascript"></script>
+    <script>
+
+        var initialize = function ()
+        {
+            var mapContainer = document.getElementById("divMap");
+            //vbd.pathImgMap = 'http://images.vietbando.com/mapimagesws/mapimageservice.ashx?Action=GetTiles';
+            var mapProp = {
+                center: new vbd.LatLng(10.8152328, 106.680505),
+                zoom: 10
+            };
+            var map = new vbd.Map(mapContainer, mapProp);
+			
+            var position = map.getCenter(); /*vị trí của marker trên map*/
+            var marker = new vbd.Marker({
+                position: position
+            });
+            marker.setMap(map);
+
+            vbd.event.addListener(marker, 'click', function ()
+            {
+                alert('Marker vừa click');
+            });
+        };
+        vbd.event.addDomListener(window, 'load', initialize);
+    </script>
+</body>
+</html>
