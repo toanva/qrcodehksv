@@ -902,7 +902,8 @@ a.quickreply__button {
 }
 
 .mobile .bot-header .bot-header__avatar {
- width: 100%;
+ width: 251px;
+ height: 91px;
 }
 
 .mobile .bot-info-container {
