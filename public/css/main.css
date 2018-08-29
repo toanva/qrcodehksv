@@ -284,18 +284,21 @@ html.no-mobile .phone-footers_no-hide:not(.phone-footers_full) {
 }
 
 .bot-header {
+  width: 251px;
+  height: 100px;
   margin-top: 75px;
   display: inline-block;
 }
 .bot-header .bot-header__picture {
   background-size: cover;
-  
+  height: 210px;
   margin-bottom: -71px;
   border-radius: 7px;
   margin-top: 72px;
   display: none;
 }
 .bot-header .bot-header__avatar {
+  width: 251px;
   background-size: contain;
   background: #D8D8D8;
   border-radius: 2px;
