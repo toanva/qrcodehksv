@@ -285,8 +285,6 @@ html.no-mobile .phone-footers_no-hide:not(.phone-footers_full) {
 
 .bot-header {
   margin-top: 75px;
-  width: 251px;
-  height: 100px;
   display: inline-block;
 }
 .bot-header .bot-header__picture {
@@ -300,8 +298,6 @@ html.no-mobile .phone-footers_no-hide:not(.phone-footers_full) {
 .bot-header .bot-header__avatar {
   background-size: contain;
   background: #D8D8D8;
-  width: 251px;
-  height: 100px;
   border-radius: 2px;
   position: relative;
   background-size: contain;
