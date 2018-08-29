@@ -289,7 +289,7 @@ html.no-mobile .phone-footers_no-hide:not(.phone-footers_full) {
 }
 .bot-header .bot-header__picture {
   background-size: cover;
-  height: 210px;
+  
   margin-bottom: -71px;
   border-radius: 7px;
   margin-top: 72px;
