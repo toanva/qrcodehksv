@@ -902,7 +902,7 @@ a.quickreply__button {
 }
 
 .mobile .bot-header .bot-header__avatar {
- 
+ width: 100%;
 }
 
 .mobile .bot-info-container {
